@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Karpet Klean Billing Generator</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--js-->
+        <script src="js/libs/angular.js/angular.js"></script>
+        <script src="js/libs/angular.js/angular-resource.js"></script>
+        <script src="js/libs/angular-ui/ui-bootstrap-tpls-0.10.0.js"></script>
+        <script src="js/libs/jquery/jquery-2.1.1.js"></script>
+        <script src="js/libs/bootstrap/bootstrap.js"></script>
+        
+        <!--modules-->
+        <script src="modules/modules.js"></script>
+        <script src="modules/config.js"></script>
+        <!--controllers-->
+        <script src="modules/kkDBModule/controllers/controller_billing.js"></script>
+        <script src="modules/kkDBModule/controllers/controller_reports.js"></script>
+        <!--factory-->
+        <script src="modules/kkDBModule/factory.js"></script>
+        <!--css-->
+        <link rel="stylesheet" type="text/css" href="css/billing.css" />
+        <link rel="stylesheet" type="text/css" href="css/default.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css.map" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css.map" />
+    </head>
+    <body ng-app="kkDBModule">
+        <div id="navtabs" class="navDiv">
+            <div class ="navButs"><a href="#billing">Billing</a></div>
+            <div class ="navButs"><a href="#reports">Reports</a></div>
+            <div class ="navButs"><a href="#">Print</a></div>
+        </div>
+        <div ng-view></div>
+    </body>
+</html>
