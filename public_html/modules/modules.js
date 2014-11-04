@@ -4,4 +4,4 @@
  * and open the template in the editor.
  */
 
-var kkDBModule = angular.module("kkDBModule",['ui.bootstrap']);
+var kkDBModule = angular.module("kkDBModule",['ui.bootstrap','ngRoute']);

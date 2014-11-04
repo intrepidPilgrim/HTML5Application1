@@ -5,7 +5,7 @@
  */
 
 
-kkDBModule.controller('billingController',['$scope', 'billingData', function($scope, billingData) {
+kkDBModule.controller('billingController',['$scope', 'billingData','$window', function($scope, billingData, $window) {
      
     $scope.message = 'This is the billing screen';
     $scope.date = new Date();
@@ -18,15 +18,21 @@ kkDBModule.controller('billingController',['$scope', 'billingData', function($sc
     //};
     $scope.onSelect = function($item, $model, $label){
         $scope.subject_billing = $label;
+        $window.alert($label);
+        
         //bind billing textboxes to billingData if id_billing exists in billingData
     };
-    $scope.billingIDblur = function(){
-        $scope.subject_billing = "test";
+    $scope.billingIDblur = function(blurEvent){
+        $window.alert((blurEvent.target.id));
         //bind billing textboxes to billingData if id_billing exists in billingData
     };
-    angular.element(document).ready(function () {
-       
-    });
+    
+    function simpleKeys (original) {
+      return Object.keys(original).reduce(function (obj, key) {
+        obj[key] = typeof original[key] === 'object' ? '{ ... }' : original[key];
+        return obj;
+      }, {});
+    }
 
 }]);
  
