@@ -5,38 +5,18 @@
  */
 
 
-kkDBModule.factory('billingData', function(){
+kkDBModule.factory('billingData', ['$http', function($http){
      
-    //var fac = {};
-     
-    //fac.bilingData = 'test'; 
-    dumData = {
-                "billingDatum":
-                [{
-                    "id_billing":"0001",
-                    "date_billing":"1/1/2014",
-                    "customer_name":"Enter Customer Name",
-                    "customer_add":"Enter Customer Address",
-                    "subject_billing":"Subject",
-                    "emp_billing":"Employee Name",
-                    "totalwords_billing":"one two three",
-                    "total_billing":"222.00",
-                    "period_billing":null
-                },
+    var billingData = {};
+    billingData.get_id_billing = function(){ 
         
-                {
-                    "id_billing":"0002",
-                    "date_billing":"1/1/2014",
-                    "customer_name":"Enter Customer Name02",
-                    "customer_add":"Enter Customer Address02",
-                    "subject_billing":"Subject02",
-                    "emp_billing":"Employee Name",
-                    "totalwords_billing":"one two three",
-                    "total_billing":"222.00",
-                    "period_billing":null
-                }]
-            };
-     
-    return dumData;
- 
-});
+        return $http({
+          method: 'POST',
+          url: 'update.php',
+          data: "action=id_billing_query",
+          headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        });
+
+    };
+    return billingData;
+}]);

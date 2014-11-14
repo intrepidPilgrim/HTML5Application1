@@ -1,0 +1,1 @@
+<?php$mysqli = new mysqli("localhost", "root", "", "daleona1_kkdb");//$mysqli = new mysqli("localhost", "daleona1_frank", "fr@nk1lm1lm", "daleona1_kkDB");if ($mysqli->connect_errno) {    echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;}?>
