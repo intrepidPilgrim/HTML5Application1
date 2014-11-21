@@ -1,16 +1,16 @@
 <div id="container" class="pageborder" ng-controller="billingController">
     <div id="companyLogo">KARPET KLEEN MAINTENANCE CORP.</div>
     <div id="companyAdd">404 CLF Bldg. Chino Roces Avenue, Makati City, Tel. Nos.: 571-1642 / 403-6983 / 570-8861 / Fax No.: 725-44-98 VAT REG. TIN:008-050-221-000"</div>
-    <pre>Model: {{selected|json}}</pre>   
+    <pre>Billing ID: {{selected|json}}</pre>   
     <input type="text" id="id_billing" ng-model="selected" class="form_control" typeahead="id_bill for id_bill in id_billing  | filter:$viewValue | limitTo:8"  typeahead-on-select='onSelect($item, $model, $label)' ng-blur="billingIDblur($event)">
-    <input type="text" id="date_billing" title="Enter billing date" ng-model="date_billing" class="billingDiv" >
-    <input type="text" id="customer_name" title="Enter customer name" ng-model="customer_name" class="billingDiv">
-    <input type="text" id="customer_add" title="Enter customer address" ng-model="customer_add" class="billingDiv" >
-    <input type="text" id="subject_billing" title="Enter subject of billing" ng-model="subject_billing" class="billingDiv" >
-    <input type="text" id="emp_billing" title="Employee name" ng-model="emp_billing" class="billingDiv"  value="Employee name here">
+    <input type="text" id="date_billing" title="Enter billing date" ng-model="billing.date_billing" class="billingDiv" >
+    <input type="text" id="customer_name" title="Enter customer name" ng-model="billing.customer_name" class="billingDiv">
+    <input type="text" id="customer_add" title="Enter customer address" ng-model="billing.customer_add" class="billingDiv" >
+    <input type="text" id="subject_billing" title="Enter subject of billing" ng-model="billing.subject_billing" class="billingDiv" >
+    <input type="text" id="emp_billing" title="Employee name" ng-model="billing.emp_billing" class="billingDiv"  value="Employee name here">
     <div id="add_table_container"></div>
-    <div id="totalwords_billing" class="totalDiv" ng-model="totalwords_billing">Five Hundred</div>
-    <div id="total_billing" class="totalDiv" ng-model="total_billing">500</div>
+    <div id="totalwords_billing" class="totalDiv" ng-model="billing.totalwords_billing"></div>
+    <div id="total_billing" class="totalDiv" ng-model="billing.total_billing"></div>
 </div>
 
     

@@ -5,18 +5,18 @@
  */
 
 
-kkDBModule.factory('billingData', ['$http', function($http){
+kkDBModule.factory('queryDB', ['$http', function($http){
      
-    var billingData = {};
-    billingData.get_id_billing = function(){ 
+    var queryData = {};
+    queryData.postQuery = function(url, data){ 
         
         return $http({
           method: 'POST',
-          url: 'update.php',
-          data: "action=id_billing_query",
+          url: url,
+          data: data,
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
         });
 
     };
-    return billingData;
+    return queryData;
 }]);
