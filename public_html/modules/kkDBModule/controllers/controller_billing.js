@@ -40,8 +40,7 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
         $timeout(function(){
             //on id_billing blur, check if input value is 
             if(($scope.id_billing.indexOf($scope.selected))<0){
-                $scope.billing = newRecord_Billing;
-                
+                $scope.billing = newRecord_Billing;   
             }      
         },1000);
         //bind billing textboxes to billingData if id_billing exists in billingData
@@ -63,6 +62,7 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
         switch(qtype){
             case 'id_numbers':
                 $scope.id_billing = data[0];
+                $scope.id_cust_names = data[1];
             break;
             case 'id_record':
                 $scope.billing = data;
