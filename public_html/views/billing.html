@@ -2,9 +2,9 @@
     <div id="companyLogo">KARPET KLEEN MAINTENANCE CORP.</div>
     <div id="companyAdd">404 CLF Bldg. Chino Roces Avenue, Makati City, Tel. Nos.: 571-1642 / 403-6983 / 570-8861 / Fax No.: 725-44-98 VAT REG. TIN:008-050-221-000"</div>
     <pre>Billing ID: {{selected|json}}</pre>   
-    <input type="text" id="id_billing" ng-model="selected" class="form_control" typeahead="id_bill for id_bill in id_billing  | filter:$viewValue | limitTo:100"  typeahead-on-select='onSelect($item, $model, $label)' ng-blur="billingIDblur($event)">
+    <input type="text" id="id_billing" ng-model="selected" class="form_control" typeahead="id_bill for id_bill in id_billing  | filter:$viewValue | limitTo:100"  typeahead-on-select='onSelect_id_billing($item, $model, $label)' ng-blur="billingIDblur($event)">
     <input type="text" id="date_billing" title="Enter billing date" ng-model="billing.date_billing" class="billingDiv" >
-    <input type="text" id="customer_name" class = "form_control" title="Enter customer name" ng-model="billing.customer_name" typeahead="id_cust_name for id_cust_name in id_cust_names  | filter:$viewValue | limitTo:100">
+    <input type="text" id="customer_name" class = "form_control" title="Enter customer name" ng-model="billing.customer_name" typeahead="id_cust_name for id_cust_name in id_cust_names  | filter:$viewValue | limitTo:100" typeahead-on-select='onSelect_customer_name($item, $model, $label, $scope)' ng-blur="billingIDblur($event)">
     <input type="text" id="customer_add" title="Enter customer address" ng-model="billing.customer_add" class="billingDiv" >
     <input type="text" id="subject_billing" title="Enter subject of billing" ng-model="billing.subject_billing" class="billingDiv" >
     <input type="text" id="emp_billing" title="Employee name" ng-model="billing.emp_billing" class="billingDiv"  value="Employee name here">

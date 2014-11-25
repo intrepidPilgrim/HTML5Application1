@@ -6,12 +6,11 @@
 
 kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeout', function($scope, queryDB, $window, $timeout) {
      
-    $scope.message = 'This is the billing screen';
     $scope.date = new Date();
     $scope.selected= undefined;
     $scope.billing = {};
     
-    newRecord_Billing = {
+    $scope.billing = {
         "customer_name":"Enter New Customer Name",
         "date_billing":"Select New Date",
         "customer_add":"Enter New Customer Address",
@@ -20,29 +19,45 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
     };
     //onload query database for existing id_billing numbers
     query_id_billing('update.php', "action=id_billing_query", "id_numbers");
-   
-        
-
-
-    //$scope.customer_name = billingData.billingDatum[1].customer_name;
-    //$scope.billingIDChange = function(){
-    //    $scope.subject_billing = $scope.selected;
-        //bind billing textboxes to billingData if id_billing exists in billingData
-    //};
     
-    $scope.onSelect = function($item, $model, $label){
+    $scope.onSelect_id_billing = function($item, $model, $label){
         //on select, query database for existing record with selected id_billing nunmber
         query_id_billing('update.php', "action=id_billing_record_query&id_billing="+ $label, "id_record");
-        //bind billing/ textboxes to billingData if id_billing exists in billingData
+ 
     };
     
-    $scope.billingIDblur = function(){
-        $timeout(function(){
+    $scope.onSelect_customer_name = function($item, $model, $label){
+
+        //disable billingIDblur
+        $scope.billingIDblur.trigBool = false;
+
+        query_id_billing("update.php", "action=latest_customer_record&customer_name=" + $scope.billing.customer_name, "latest_customer_record");
+       
+        //bind billing/ textboxes to billingData if id_billing exists in billingData
+    };
+    $scope.billingIDblur = function($event){
+        //console.log($event);
+        trigBool = true;
+
+        trigBlur = function(bool){
+            if(bool){
+                if(($scope.id_billing.indexOf($scope.selected))<0){
+                   newRecord();
+                }else{
+                    query_id_billing('update.php', "action=id_billing_record_query&id_billing="+ $scope.selected, "id_record");
+                }
+            }
+        };
+        
+        
+        //$timeout(function(){
+            
             //on id_billing blur, check if input value is 
-            if(($scope.id_billing.indexOf($scope.selected))<0){
-                $scope.billing = newRecord_Billing;   
-            }      
-        },1000);
+            
+                trigBlur(trigBool);
+                 
+                 
+        //},1000);
         //bind billing textboxes to billingData if id_billing exists in billingData
     };
     
@@ -59,12 +74,26 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
     }
     
     function successHandler(data,qtype){
+        
         switch(qtype){
             case 'id_numbers':
                 $scope.id_billing = data[0];
                 $scope.id_cust_names = data[1];
             break;
             case 'id_record':
+                $scope.billing = data;
+            break;
+            case 'find_last_record':
+                $scope.selected = Number(data["id_billing"]) + 1;
+                //insert new record
+                var qParams = {};
+                //qParams = $scope.billing;
+                //qParams["action"] = "new_record";
+                //console.log($scope.billing);
+                //query_id_billing('update.php', "action=new_record", "new_record");
+            break;
+            case 'latest_customer_record':
+                $scope.selected = data["id_billing"];
                 $scope.billing = data;
             break;
         }
@@ -77,6 +106,18 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
         return obj;
       }, {});
     }
-
+    
+    function newRecord(){    
+        if(($scope.id_billing.indexOf($scope.selected))<0){
+            //find last id_billing number
+            query_id_billing('update.php', "action=find_last_record", "find_last_record");
+            //$scope.billing = newRecord_Billing;
+         }            
+    }
+    
+    function updateOnBlur(){
+        
+        
+    };
 }]);
  
