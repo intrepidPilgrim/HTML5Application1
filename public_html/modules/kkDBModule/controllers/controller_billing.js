@@ -30,9 +30,7 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
 
         //disable billingIDblur
         $scope.billingIDblur.trigBool = false;
-
         query_id_billing("update.php", "action=latest_customer_record&customer_name=" + $scope.billing.customer_name, "latest_customer_record");
-       
         //bind billing/ textboxes to billingData if id_billing exists in billingData
     };
     $scope.billingIDblur = function($event){
@@ -49,7 +47,7 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
             }
         };
         
-        
+
         //$timeout(function(){
             
             //on id_billing blur, check if input value is 
@@ -59,6 +57,11 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
                  
         //},1000);
         //bind billing textboxes to billingData if id_billing exists in billingData
+    };
+    
+    $scope.billingUpdate = function(id_billing, col_billing, data_billing){
+        console.log("action=update_record&id_billing="+id_billing +"&"+col_billing+"="+data_billing);
+        query_id_billing('update.php', "action=update_record&id_billing="+id_billing +"&"+col_billing+"="+data_billing, "update_record");
     };
     
     function query_id_billing(file_path,queryParam,qType){ 
@@ -95,6 +98,9 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
             case 'latest_customer_record':
                 $scope.selected = data["id_billing"];
                 $scope.billing = data;
+            break;
+            case 'update_record':
+                $scope.message = data;
             break;
         }
         
