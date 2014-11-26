@@ -10,6 +10,8 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
     $scope.selected= undefined;
     $scope.billing = {};
     
+    trigBool = true;
+    
     $scope.billing = {
         "customer_name":"Enter New Customer Name",
         "date_billing":"Select New Date",
@@ -29,13 +31,14 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
     $scope.onSelect_customer_name = function($item, $model, $label){
 
         //disable billingIDblur
-        $scope.billingIDblur.trigBool = false;
-        query_id_billing("update.php", "action=latest_customer_record&customer_name=" + $scope.billing.customer_name, "latest_customer_record");
+        console.log($scope.billing.customer_name);
+        trigBool = false;
+        query_id_billing("update.php", "action=latest_customer_record&customer_name=" + encodeURIComponent($scope.billing.customer_name), "latest_customer_record");
         //bind billing/ textboxes to billingData if id_billing exists in billingData
     };
     $scope.billingIDblur = function($event){
         //console.log($event);
-        trigBool = true;
+        
 
         trigBlur = function(bool){
             if(bool){
@@ -53,7 +56,7 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
             //on id_billing blur, check if input value is 
             
                 trigBlur(trigBool);
-                 
+                trigBool = true;
                  
         //},1000);
         //bind billing textboxes to billingData if id_billing exists in billingData
