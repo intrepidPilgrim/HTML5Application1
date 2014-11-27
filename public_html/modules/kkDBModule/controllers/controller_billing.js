@@ -22,6 +22,7 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
     //onload query database for existing id_billing numbers
     query_id_billing('update.php', "action=id_billing_query", "id_numbers");
     
+    
     $scope.onSelect_id_billing = function($item, $model, $label){
         //on select, query database for existing record with selected id_billing nunmber
         query_id_billing('update.php', "action=id_billing_record_query&id_billing="+ $label, "id_record");
@@ -88,6 +89,8 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
             break;
             case 'id_record':
                 $scope.billing = data;
+                //$scope.grid_data = data;
+                console.log(data);
             break;
             case 'find_last_record':
                 $scope.selected = Number(data["id_billing"]) + 1;
@@ -127,6 +130,10 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
     function updateOnBlur(){
         
         
+    };
+    function getGridData(id_billing){
+        grid_data = $scope.billing;
+        return grid_data;
     };
 }]);
  

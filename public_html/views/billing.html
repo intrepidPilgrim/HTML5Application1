@@ -8,7 +8,8 @@
     <input type="text" id="customer_add" title="Enter customer address" ng-blur="billingUpdate(selected,'customer_add',billing.customer_add)" ng-model="billing.customer_add" class="billingDiv" >
     <input type="text" id="subject_billing" title="Enter subject of billing" ng-blur="billingUpdate(selected,'subject_billing',billing.subject_billing)" ng-model="billing.subject_billing" class="billingDiv" >
     <input type="text" id="emp_billing" title="Employee name" ng-blur="billingUpdate(selected,'emp_billing',billing.emp_billing)" ng-model="billing.emp_billing" class="billingDiv"  value="Employee name here">
-    <div id="add_table_container"></div>
+    
+    <div id="grid1" ui-grid="{ data: grid_data }" class="myGrid"></div>
     <div id="totalwords_billing" class="totalDiv" ng-model="billing.totalwords_billing"></div>
     <div id="total_billing" class="totalDiv" ng-model="billing.total_billing"></div>
 </div>
