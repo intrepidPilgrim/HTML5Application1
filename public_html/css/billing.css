@@ -1,5 +1,5 @@
 .myGrid {
-    width:500px;
+    width:900px;
     height: 250px;
   }
 
@@ -72,7 +72,7 @@
 	width: 500px;
 	border:none;
 }
-#companyAdd{
+#company{
 	font: bold 12px arial, sans-serif;
 	margin-left:110px;
 	text-align: center;
@@ -136,7 +136,7 @@
 .numberTD{
 	text-align:right;
 }
-#id_billing{
+#id{
 	margin-top:7px;
 	margin-right:45px;
 	display: inline-block;
@@ -146,7 +146,7 @@
 	width: 130px;
 	background:#fff;
 }
-#date_billing{
+#date{
 	margin-right:45px;
 	display: inline-block;
         float:right;
@@ -154,7 +154,7 @@
 	text-align: right;
 	width: 130px;
 }
-#customer_name{
+#customer{
 	font-weight:bold;
 	margin-left: 65px;
 	display: inline-block;
@@ -173,12 +173,12 @@
 	width: 300px;
 	height:auto;
 }
-#subject_billing{
+#subject{
 	margin-left: 65px;
 	margin-right: auto;
 	width: 300px;
 }
-#item_period{
+#period{
 	font-weight:bold;
 	margin-left: 65px;
 	margin-right: auto;
