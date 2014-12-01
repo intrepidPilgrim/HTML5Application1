@@ -9,6 +9,27 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
     $scope.date = new Date();
     $scope.prev_val = "";
     $scope.selected= undefined;
+    $scope.additional = {
+        enableSorting: true,
+        columnDefs: [
+            {
+                name:'type',
+                field:'val',
+                width:350
+            },
+            {
+                name:'at',
+                width:50,
+                enableSorting:false,
+                enableCellEdit:false,
+                cellClass:'centerColumn',
+                cellTemplate:'<span>@</span>'
+                
+            }
+        ],
+        data:[{type:"1",val:"val1",},{type:"2",val:"val2"}]
+        
+    };
     $scope.billing = {};
         
     trigBool = true;
@@ -17,12 +38,11 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
         "customer":"Enter New Customer Name",
         "date":"Select New Date",
         "customer":"Enter New Customer Address",
-        "subject":"Enter Billing Subject"
-        
+        "subject":"Enter New Billing Subject"
     };
     //onload query database for existing id_billing numbers
     query_id_billing('update.php', "action=id_billing_query", "id_numbers");
-    
+    query_id_billing('update.php', "action=find_last_record", "find_last_record");
     
     $scope.onSelect_id_billing = function($item, $model, $label){
         //on select, query database for existing record with selected id_billing nunmber
@@ -100,7 +120,7 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
                
             break;
             case 'find_last_record':
-                $scope.selected = Number(data["id"]) + 1;
+                $scope.selected = Number(data["id"]);
                 //insert new record
                 var qParams = {};
                 //qParams = $scope.billing;

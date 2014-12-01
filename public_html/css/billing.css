@@ -1,8 +1,9 @@
 .myGrid {
-    width:900px;
-    height: 250px;
+    width:400;
   }
-
+.centerColumn{
+      text-align:center;
+  }
 .hot_table{
 	border:1px solid black;
 	margin:10px;
