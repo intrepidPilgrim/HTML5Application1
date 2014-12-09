@@ -4,6 +4,9 @@
 .centerColumn{
       text-align:center;
   }
+.leftColumn{
+      text-align:left;
+  }
 .hot_table{
 	border:1px solid black;
 	margin:10px;

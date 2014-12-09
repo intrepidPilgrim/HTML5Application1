@@ -10,24 +10,50 @@ kkDBModule.controller('billingController',['$scope', 'queryDB','$window','$timeo
     $scope.prev_val = "";
     $scope.selected= undefined;
     $scope.additional = {
-        enableSorting: true,
+        hideHeader:true,
         columnDefs: [
+            
             {
-                name:'type',
-                field:'val',
-                width:350
+                name:'ADD',
+                field:'type',
+                width:50
             },
             {
-                name:'at',
-                width:50,
-                enableSorting:false,
-                enableCellEdit:false,
+                name:'=',
+                width:25,
+                cellClass:'leftColumn',
+                cellTemplate:'<span>=</span>'
+                
+            },
+            {
+                name:'hrs',
+                width:30,
+                cellClass:'centerColumn',
+                cellTemplate:'<span>hrs.</span>'
+                
+            },           
+            {
+                name:'@',
+                width:30,
                 cellClass:'centerColumn',
                 cellTemplate:'<span>@</span>'
                 
+            },
+            {
+                name:'val',
+                width:50,
+                cellClass:'centerColumn',
+                cellTemplate:'<span>---</span>'
+                
             }
         ],
-        data:[{type:"1",val:"val1",},{type:"2",val:"val2"}]
+        data:[
+                {type:"ROT",val:""},
+                {type:"SOT",val:""},
+                {type:"LH",val:""},
+                {type:"ND",val:""},
+                {type:"US",val:""}
+             ]
         
     };
     $scope.billing = {};
