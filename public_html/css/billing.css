@@ -1,11 +1,14 @@
 .myGrid {
-    width:400;
+
   }
 .centerColumn{
       text-align:center;
   }
 .leftColumn{
       text-align:left;
+  }
+.rightColumn{
+      text-align:right;
   }
 .hot_table{
 	border:1px solid black;

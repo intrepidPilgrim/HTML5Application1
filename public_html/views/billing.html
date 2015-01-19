@@ -9,7 +9,9 @@
     <input type="text" id="subject" title="Subject" ng-blur="billingUpdate(selected,'subject',billing.subject)" ng-model="billing.subject" class="billingDiv"  value="Input Subject of Billing Here">
     <input type="text" id="employee" title="Employee Name" ng-blur="billingUpdate(selected,'employee',billing.employee)" ng-model="billing.employee" class="billingDiv"  value="Employee name here">
     <input type="text" id="period" title="For period of" ng-blur="billingUpdate(selected,'period',billing.period)" ng-model="billing.period" class="billingDiv"  value="For Period Of">
-    <div id="grid1" ui-grid="additional" ui-grid-edit ui-grid-cellNav class="myGrid"></div>
+    <button ng-click="addRow()" type="button">Add Row</button>
+    <div id="oneGrid" ui-grid="gridArr" ui-grid-edit ui-grid-cellNav ui-grid-auto-resize class="myGrid"></div>
+    
 
 </div>
 
